@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import * as schema from './src/db/schema';
+import * as schema from '../src/db/schema';
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://user:password@localhost:5432/nados?schema=public';
 
@@ -11,7 +11,15 @@ const db = drizzle(client, { schema });
 async function main() {
   console.log('Seeding templates...');
 
-  const templates = [
+  const templates: {
+    name: string;
+    slug: string;
+    description: string;
+    category: 'thesis' | 'portfolio' | 'engineering' | 'business_plan' | 'market_research' | 'course' | 'custom' | 'other';
+    schema: unknown;
+    displayOrder: number;
+    isActive: boolean;
+  }[] = [
     { name: 'أطروحة تخرج', slug: 'thesis', description: 'قالب لأطروحة التخرج مع فصول ومقدمة وخاتمة', category: 'thesis', schema: { fields: ['university', 'department', 'supervisor', 'chapters'] }, displayOrder: 1, isActive: true },
     { name: 'معرض أعمال', slug: 'portfolio', description: 'قالب لعرض الأعمال والمشاريع السابقة', category: 'portfolio', schema: { fields: ['title', 'description', 'skills', 'projects'] }, displayOrder: 2, isActive: true },
     { name: 'مشروع هندسي', slug: 'engineering', description: 'قالب للمشاريع الهندسية والمخططات', category: 'engineering', schema: { fields: ['projectName', 'location', 'area', 'materials'] }, displayOrder: 3, isActive: true },

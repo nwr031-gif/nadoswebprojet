@@ -71,8 +71,8 @@ function getBaseTemplate(content: string, locale: 'ar' | 'en' = 'ar'): EmailTemp
 export async function sendVerificationEmail(email: string, token: string, locale: 'ar' | 'en' = 'ar'): Promise<void> {
   const verifyUrl = `${APP_URL}/${locale}/auth/verify-email?token=${token}`;
   const t = locale === 'ar' 
-    ? { subject: 'تفعيل حسابك في نادوس', verify: 'تفعيل الحساب', message: 'شكراً لتسجيلك في نادوس. اضغط على الزر أدناه لتفعيل حسابك:' }
-    : { subject: 'Verify your NADOS account', verify: 'Verify Account', message: 'Thanks for signing up for NADOS. Click the button below to verify your account:' };
+    ? { greeting: 'مرحباً', subject: 'تفعيل حسابك في نادوس', verify: 'تفعيل الحساب', message: 'شكراً لتسجيلك في نادوس. اضغط على الزر أدناه لتفعيل حسابك:' }
+    : { greeting: 'Hello', subject: 'Verify your NADOS account', verify: 'Verify Account', message: 'Thanks for signing up for NADOS. Click the button below to verify your account:' };
 
   const template = getBaseTemplate(`
     <p>${t.greeting},</p>
@@ -97,8 +97,8 @@ export async function sendVerificationEmail(email: string, token: string, locale
 export async function sendPasswordResetEmail(email: string, token: string, locale: 'ar' | 'en' = 'ar'): Promise<void> {
   const resetUrl = `${APP_URL}/${locale}/auth/reset-password?token=${token}`;
   const t = locale === 'ar'
-    ? { subject: 'إعادة تعيين كلمة المرور - نادوس', reset: 'إعادة تعيين كلمة المرور', message: 'تلقينا طلباً لإعادة تعيين كلمة المرور الخاصة بك. اضغط على الزر أدناه:' }
-    : { subject: 'Reset your NADOS password', reset: 'Reset Password', message: 'We received a request to reset your password. Click the button below:' };
+    ? { greeting: 'مرحباً', subject: 'إعادة تعيين كلمة المرور - نادوس', reset: 'إعادة تعيين كلمة المرور', message: 'تلقينا طلباً لإعادة تعيين كلمة المرور الخاصة بك. اضغط على الزر أدناه:' }
+    : { greeting: 'Hello', subject: 'Reset your NADOS password', reset: 'Reset Password', message: 'We received a request to reset your password. Click the button below:' };
 
   const template = getBaseTemplate(`
     <p>${t.greeting},</p>
@@ -127,8 +127,8 @@ export async function sendRequestSubmittedEmail(
   locale: 'ar' | 'en' = 'ar'
 ): Promise<void> {
   const t = locale === 'ar'
-    ? { subject: 'تم استلام طلبك - نادوس', message: 'تم استلام طلبك بنجاح. سيقوم فريقنا بمراجعته والرد عليك قريباً.' }
-    : { subject: 'Request Received - NADOS', message: 'Your request has been received successfully. Our team will review it and get back to you soon.' };
+    ? { greeting: 'مرحباً', subject: 'تم استلام طلبك - نادوس', message: 'تم استلام طلبك بنجاح. سيقوم فريقنا بمراجعته والرد عليك قريباً.' }
+    : { greeting: 'Hello', subject: 'Request Received - NADOS', message: 'Your request has been received successfully. Our team will review it and get back to you soon.' };
 
   const template = getBaseTemplate(`
     <p>${t.greeting},</p>
@@ -166,8 +166,8 @@ export async function sendRequestStatusUpdateEmail(
   
   const label = statusLabels[status]?.[locale] || status;
   const t = locale === 'ar'
-    ? { subject: `تحديث على طلبك: ${label} - نادوس`, message: 'تم تحديث حالة طلبك:' }
-    : { subject: `Request Update: ${label} - NADOS`, message: 'Your request status has been updated:' };
+    ? { greeting: 'مرحباً', subject: `تحديث على طلبك: ${label} - نادوس`, message: 'تم تحديث حالة طلبك:' }
+    : { greeting: 'Hello', subject: `Request Update: ${label} - NADOS`, message: 'Your request status has been updated:' };
 
   const template = getBaseTemplate(`
     <p>${t.greeting},</p>
@@ -197,8 +197,8 @@ export async function sendProjectPublishedEmail(
   locale: 'ar' | 'en' = 'ar'
 ): Promise<void> {
   const t = locale === 'ar'
-    ? { subject: 'تم نشر مشروعك في المعرض - نادوس', message: 'تهانينا! تم نشر مشروعك بنجاح في المعرض العام.' }
-    : { subject: 'Your Project is Published - NADOS', message: 'Congratulations! Your project has been successfully published to the public showcase.' };
+    ? { greeting: 'مرحباً', subject: 'تم نشر مشروعك في المعرض - نادوس', message: 'تهانينا! تم نشر مشروعك بنجاح في المعرض العام.' }
+    : { greeting: 'Hello', subject: 'Your Project is Published - NADOS', message: 'Congratulations! Your project has been successfully published to the public showcase.' };
 
   const template = getBaseTemplate(`
     <p>${t.greeting},</p>
@@ -246,8 +246,8 @@ export async function sendAccountDeletionEmail(
   locale: 'ar' | 'en' = 'ar'
 ): Promise<void> {
   const t = locale === 'ar'
-    ? { subject: 'تم حذف حسابك - نادوس', message: 'تم حذف حسابك بنجاح. يمكنك استعادة الحساب خلال 30 يوماً من خلال صفحة الاسترداد.' }
-    : { subject: 'Account Deleted - NADOS', message: 'Your account has been deleted. You can recover it within 30 days through the recovery page.' };
+    ? { greeting: 'مرحباً', subject: 'تم حذف حسابك - نادوس', message: 'تم حذف حسابك بنجاح. يمكنك استعادة الحساب خلال 30 يوماً من خلال صفحة الاسترداد.' }
+    : { greeting: 'Hello', subject: 'Account Deleted - NADOS', message: 'Your account has been deleted. You can recover it within 30 days through the recovery page.' };
 
   const template = getBaseTemplate(`
     <p>${t.greeting},</p>
