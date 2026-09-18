@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Environment files (secrets) — never commit
+.env
+.env.*
+!.env.example
+
+# Kilo / configuration
+.kilo/
+.kilocode/
+.opencode/
+
+# Screenshots / generated artifacts
+*.png
+!public/*.png
+
+# Personal spec document
+/برومنت بناء nados.txt
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Playwright
+/test-results/
+/playwright-report/
+# Vitest coverage
+coverage/
+
+# Drizzle journal/migrations are committed, but studio db is local
+*.sqlite
+*.db
