@@ -1,0 +1,8 @@
+# Cloudflare Workers/Pages configuration
+name = "nados-web"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Output of `npm run pages:build` (next-on-pages)
+pages_build_output_dir = ".vercel/output/static"
+preserve_entrypoints = true

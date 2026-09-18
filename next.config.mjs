@@ -1,3 +1,13 @@
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
+
+if (process.env.NODE_ENV === 'development') {
+  try {
+    await setupDevPlatform();
+  } catch (e) {
+    console.warn('Cloudflare dev platform skipped:', e?.message);
+  }
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
